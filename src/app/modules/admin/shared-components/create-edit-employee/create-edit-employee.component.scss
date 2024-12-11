@@ -1,8 +1,6 @@
 .create-edit-container {
     width: 100%;
     height: 100%;
-    margin-left: 10px;
-
     .container {
         max-width: 1140px;
         display: flex;
@@ -10,8 +8,6 @@
         margin: 0 auto;
 
         .title-container {
-            // border: 1px solid #5046e617;
-            border-bottom: none;
             border-radius: 10px 10px 0px 0px;
             background-color: #5046e617;
             padding: 10px 20px;
@@ -61,6 +57,10 @@
                     margin-bottom: 20px;
                 }
             }
+        }
+
+        @media(max-width:1280px){
+            max-width: 95%;
         }
     }
 }

@@ -16,22 +16,25 @@
                 </div>
 
                 <div class="ml-2">
-                    <button class="fuse-mat-button-large w-auto create-new" mat-flat-button [color]="'primary'"
+                    <!-- <button class="fuse-mat-button-large w-auto create-new" mat-flat-button [color]="'primary'"
                         (click)="createEmployee()">
                         <span>
                             Create
                         </span>
-                    </button>
+                    </button> -->
+                    <div class="add-icon" (click)="createEmployee()">
+                        <mat-icon matTooltip="Add Employee">add_circle</mat-icon>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class=" w-full mt-8">
-            <table mat-table [dataSource]="filteredEmployeeList" class="mat-elevation-z8">
+            <table mat-table [dataSource]="filteredEmployeeList" class="mat-elevation-z8 tab-web-resp">
 
-                <ng-container matColumnDef="full_name">
+                <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef> Name</th>
-                    <td mat-cell *matCellDef="let element">{{element?.full_name}}</td>
+                    <td mat-cell *matCellDef="let element">{{element?.name}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="role">
@@ -41,7 +44,8 @@
 
                 <ng-container matColumnDef="date">
                     <th mat-header-cell *matHeaderCellDef> Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element?.date}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element?.date_from | date:'YYYY MMM dd'}} -
+                        {{element?.date_to | date:'YYYY MMM dd'}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="action">
@@ -49,12 +53,11 @@
                     <td mat-cell *matCellDef="let element" class="action-cell-td">
                         <div class="card-btn-section">
                             <div class="card-icon" matTooltip="Edit" (click)="editEmployee(element)">
-                                <img src="../../../../assets/images/svg/edit-icon.svg" alt="delete-icon">
+                                <img src="../../../../../assets/images/svg/edit-icon.svg" alt="delete-icon">
                             </div>
                             <div class="card-icon branch-more-details-icon" matTooltip="Delete"
                                 (click)="deleteEmployee(element)">
-                                <img src="../../../../assets/images/svg/delete-icon.svg"
-                                    alt="branch-details-icon">
+                                <img src="../../../../../assets/images/svg/delete-icon.svg" alt="branch-details-icon">
                             </div>
                         </div>
                     </td>
@@ -64,9 +67,38 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumnBranches;"></tr>
             </table>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-0 sm:mt-0 mobile-resp">
+                <ng-container *ngFor="let employee of filteredEmployeeList">
+                    <div class="flex flex-col h-70 shadow rounded-2xl overflow-hidden bg-card mb-5">
+                        <div class="flex flex-col p-6">
+                            <div class="mt-4 text-lg font-medium">
+                                {{employee?.name}}
+                            </div>
+                            <div class="mt-0.5 line-clamp-2 text-secondary">
+                                {{employee?.role}}
+                            </div>
+                            <div class="mt-0.5 line-clamp-2 text-secondary">
+                                {{employee?.date_from | date:'YYYY MMM dd'}} - {{employee?.date_to | date:'YYYY MMM dd'}}
+                            </div>
+                            <div class="w-30 h-1 my-3 border-t-2"></div>
+                            <div class="card-btn-section">
+                                <div class="card-icon" matTooltip="Edit" (click)="editEmployee(employee)">
+                                    <img src="../../../../assets/images/svg/edit-icon.svg" alt="delete-icon">
+                                </div>
+                                <div class="card-icon branch-more-details-icon" matTooltip="Delete"
+                                    (click)="deleteEmployee(employee)">
+                                    <img src="../../../../assets/images/svg/delete-icon.svg" alt="branch-details-icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
             <ng-container *ngIf="employeeList?.length == 0">
                 <div class="no-data-found">
-                    <p>No Employee found</p>
+                    <!-- <p>No Employee found</p> -->
+                     <img src="../../../../../assets/images/svg/no-emploee-found.svg" alt="">
                 </div>
             </ng-container>
         </div>

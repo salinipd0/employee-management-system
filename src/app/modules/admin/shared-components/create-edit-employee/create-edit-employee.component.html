@@ -17,8 +17,8 @@
                     <div class="form-field-container">
                         <mat-form-field class="w-full">
                             <mat-label>Name</mat-label>
-                            <input id="full_name" matInput formControlName="full_name">
-                            <mat-error *ngIf="employeeFormDetails.get('full_name').hasError('required')">
+                            <input id="name" matInput formControlName="name">
+                            <mat-error *ngIf="employeeFormDetails.get('name').hasError('required')">
                                 Name is required
                             </mat-error>
                         </mat-form-field>
