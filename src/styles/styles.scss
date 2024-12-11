@@ -54,13 +54,19 @@
 }
 
 
-.mat-elevation-z8{
+.mat-elevation-z8 {
     box-shadow: none !important;
 }
+
 .mat-mdc-table {
     border-radius: 10px !important;
     overflow: hidden !important;
     border-collapse: separate;
+    border: 1px solid rgb(219, 216, 251) !important;
+}
+
+.mat-mdc-header-cell {
+    color: #5046e6;
 }
 
 .back-arrow-block {
