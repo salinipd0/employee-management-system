@@ -64,6 +64,7 @@ export class CreateEditEmployeeComponent {
   getEmployeeDetails() {
     this._employeeDbApiService.getEmployeeById(this.employeeId).then((response: any) => {
       if (response) {
+        this.employeeDetails = response;
         this.patchValuesToForm(response);
       }
     })
@@ -181,8 +182,8 @@ export class CreateEditEmployeeComponent {
   createEditEmployee() {
 
     const formValues = this.employeeFormDetails.value;
-    const dateFrom = this.convertToISO(formValues?.date_from);
-    const dateTo = this.convertToISO(formValues?.date_to);
+    const dateFrom = typeof this.employeeFormDetails.value.date_from === 'string' ? this.employeeDetails?.date_from : this.convertToISO(formValues?.date_from);
+    const dateTo = typeof this.employeeFormDetails.value.date_to === 'string' ? this.employeeDetails?.date_to : this.convertToISO(formValues?.date_to);
 
     const payload = {
       ...formValues,
@@ -191,7 +192,6 @@ export class CreateEditEmployeeComponent {
     };
 
     if (this.employeeFormDetails?.valid) {
-      console.log(this.employeeFormDetails?.value);
       if (this.isEdit) {
         this.editEmployee(payload);
       } else {
@@ -212,6 +212,7 @@ export class CreateEditEmployeeComponent {
     }
 
     return DateTime.fromISO(date).toISO();
+    
   }
 
   createEmployee(payload: any) {
