@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-field-container">
-                        <mat-form-field class="w-full">
+                        <!-- <mat-form-field class="w-full">
                             <mat-label>Date From</mat-label>
                             <input matInput [matDatepicker]="picker1" formControlName="date_from">
                             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -48,11 +48,33 @@
                             <mat-error *ngIf="employeeFormDetails.get('date_from').hasError('required')">
                                 Date From is required
                             </mat-error>
+                        </mat-form-field> -->
+
+                        <mat-form-field class="w-full">
+                            <mat-label>Date From</mat-label>
+                            <input matInput [value]="selectedDate | date:'dd MMM yyyy'" (click)="toggleCalendar('from')"
+                                formControlName="date_from" readonly>
+                            <mat-datepicker-toggle matSuffix (click)="toggleCalendar('from')"></mat-datepicker-toggle>
                         </mat-form-field>
+
+                        <div class="custom-calendar-popup" *ngIf="calendarOpen && calendarType === 'from'">
+                            <div class="calendar-buttons">
+                                <button mat-button (click)="setToday()">Today</button>
+                                <button mat-button (click)="setNextMonday()">Next Monday</button>
+                                <button mat-button (click)="setNextTuesday()">Next Tuesday</button>
+                                <button mat-button (click)="setAfterOneWeek()">After 1 Week</button>
+                            </div>
+                            <mat-calendar (selectedChange)="onDateSelected('from', $event)"></mat-calendar>
+
+                            <div class="calendar-actions">
+                                <button mat-stroked-button (click)="closeCalendar()">Cancel</button>
+                                <button mat-flat-button color="primary" (click)="saveDate()">Save</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-field-container">
-                        <mat-form-field class="w-full">
+                        <!-- <mat-form-field class="w-full">
                             <mat-label>Date To</mat-label>
                             <input matInput [matDatepicker]="picker2" formControlName="date_to">
                             <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -60,23 +82,43 @@
                             <mat-error *ngIf="employeeFormDetails.get('date_to').hasError('required')">
                                 Date To is required
                             </mat-error>
-                        </mat-form-field>
-                    </div>
-                </div>
+                        </mat-form-field> -->
 
-                <div class="button-container">
-                    <button class="fuse-mat-button-large w-auto mt-6 cancel-btn" mat-stroked-button type="button"
-                        (click)="cancel()">
-                        <span *ngIf="!employeeFormDetails.disabled">
-                            Cancel
-                        </span>
-                    </button>
-                    <button class="fuse-mat-button-large w-auto mt-6 ml-5 create-new" mat-flat-button
-                        [color]="'primary'" (click)="createEditCounter()">
-                        <span *ngIf="!employeeFormDetails.disabled">
-                            {{isEdit ? 'Update' : 'Create' }}
-                        </span>
-                    </button>
+                        <mat-form-field class="w-full">
+                            <mat-label>Date To</mat-label>
+                            <input matInput [value]="selectedDateTo | date:'dd MMM yyyy'" (click)="toggleCalendar('to')"
+                                formControlName="date_to" readonly>
+                            <mat-datepicker-toggle matSuffix (click)="toggleCalendar('to')"></mat-datepicker-toggle>
+                        </mat-form-field>
+
+                        <div class="custom-calendar-popup" *ngIf="calendarOpen && calendarType === 'to'">
+                            <div class="calendar-buttons">
+                                <button mat-button (click)="setToday()">No Date</button>
+                                <button mat-button (click)="setToday()">Today</button>
+                            </div>
+                            <mat-calendar (selectedChange)="onDateSelected('to', $event)"></mat-calendar>
+
+                            <div class="calendar-actions">
+                                <button mat-stroked-button (click)="closeCalendar()">Cancel</button>
+                                <button mat-flat-button color="primary" (click)="saveDate()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container w-full">
+                        <button class="fuse-mat-button-large w-auto mt-6 cancel-btn" mat-stroked-button type="button"
+                            (click)="cancel()">
+                            <span *ngIf="!employeeFormDetails.disabled">
+                                Cancel
+                            </span>
+                        </button>
+                        <button class="fuse-mat-button-large w-auto mt-6 ml-5 create-new" mat-flat-button
+                            [color]="'primary'" (click)="createEditEmployee()">
+                            <span *ngIf="!employeeFormDetails.disabled">
+                                {{isEdit ? 'Update' : 'Create' }}
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
