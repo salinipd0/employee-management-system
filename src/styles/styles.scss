@@ -1,0 +1,101 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: "Inter-Bold";
+    src: url('../assets/fonts/Inter_24pt-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Inter-black";
+    src: url('../assets/fonts/Inter_24pt-Black.ttf');
+}
+
+@font-face {
+    font-family: "Inter-Light";
+    src: url('../assets/fonts/Inter_24pt-Light.ttf');
+}
+
+@font-face {
+    font-family: "Inter-Regular";
+    src: url('../assets/fonts/Inter_24pt-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Inter-Medium";
+    src: url('../assets/fonts/Inter_24pt-Medium.ttf');
+}
+
+.no-data-found {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+
+    p {
+        color: #FF7734;
+        font-size: 14px;
+        font-family: 'Inter-Regular';
+    }
+}
+
+.card-btn-section {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5px !important;
+
+    .card-icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        img {
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .card-icon:hover {
+        background-color: #F2F5F4;
+        border-radius: 50px;
+    }
+}
+
+
+.mat-elevation-z8{
+    box-shadow: none !important;
+}
+.mat-mdc-table {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border-collapse: separate;
+}
+
+.back-arrow-block {
+    .back-arrow-icon {
+        width: 40px;
+        cursor: pointer;
+    }
+
+    .back-arrow-hovering-icon {
+        display: none;
+        cursor: pointer;
+    }
+}
+
+.back-arrow-block:hover {
+    .back-arrow-icon {
+        display: none;
+    }
+
+    .back-arrow-hovering-icon {
+        display: block;
+        width: 40px;
+        transition: 1s ease;
+    }
+}
