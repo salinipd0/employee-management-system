@@ -62,11 +62,11 @@
     border-radius: 10px !important;
     overflow: hidden !important;
     border-collapse: separate;
-    border: 1px solid rgb(219, 216, 251) !important;
+    border: 0.5px solid #1DA1F2 !important;
 }
 
 .mat-mdc-header-cell {
-    color: #5046e6;
+    color: #1DA1F2;
 }
 
 .back-arrow-block {
@@ -100,3 +100,14 @@
     width: 100%;
     height: 300px;
 }
+
+.mat-calendar-body-selected {
+    background-color: #1DA1F2 !important;
+    color: white !important;
+    border-radius: 50%;
+  }
+  
+  .mat-calendar-body-today {
+    border: 1px solid #1DA1F2 !important;
+    border-radius: 50%;
+  }

@@ -9,20 +9,22 @@
         margin: 0 auto;
 
         .title-container {
+            border: 1px solid #1DA1F2;
+            border-bottom: none;
             border-radius: 10px 10px 0px 0px;
-            background-color: #5046e617;
+            background-color: #EDF8FF;
             padding: 10px 20px;
 
             p {
                 font-size: 20px;
-                color: #5046e6;
+                color: #1DA1F2;
                 font-family: 'Inter-Medium';
             }
         }
 
         .form-container {
             width: 100%;
-            border: 1px solid #5046e617;
+            border: 1px solid #1DA1F2;
             border-radius: 0px 0px 10px 10px;
             padding: 10px 20px;
             background-color: #FFFFFF;
@@ -45,7 +47,7 @@
 
                         mat-label,
                         label {
-                            color: #5046e6;
+                            color: #1DA1F2;
                             font-size: 14px;
                             font-family: 'Inter-Regular';
                         }
@@ -98,6 +100,9 @@
     flex: 1;
     margin: 0 4px;
 }
+::ng-deep .mat-calendar-controls{
+    margin-top: 0 !important;
+}
 
 ::ng-deep .mat-calendar-body-selected {
     background-color: #007bff !important;
@@ -111,4 +116,16 @@
 
 ::ng-deep .custom-calendar .mat-calendar-body-selected:hover {
     background-color: #0056b3 !important;
+}
+
+.date-canel-btn{
+    color: #1DA1F2 !important;
+    background-color: #EDF8FF !important;
+    border: 1px solid #EDF8FF !important;
+    border-radius: 5px !important;
+}
+.date-save-btn{
+    color: #fff !important;
+    background-color: #1DA1F2 !important;
+    border-radius: 5px !important;
 }
